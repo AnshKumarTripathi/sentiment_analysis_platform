@@ -1,0 +1,6 @@
+INFO:werkzeug: * Detected change in 'd:\\sentiment_analysis_platform\\scrape_url.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): huggingface.co:443
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json HTTP/1.1" 200 0
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-920-364
