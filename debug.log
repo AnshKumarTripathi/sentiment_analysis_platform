@@ -1,4 +1,25 @@
-INFO:werkzeug: * Detected change in 'd:\\sentiment_analysis_platform\\scrape_url.py', reloading
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): x.com:443
+DEBUG:urllib3.connectionpool:https://x.com:443 "GET /elonmusk/status/1878731382769471560 HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [13/Jan/2025 17:12:07] "POST /analyze-url HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Jan/2025 17:12:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\__main__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\__main__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\cli.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\cli.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\ipython.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\ipython.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\main.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\main.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\parser.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\parser.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\variables.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\variables.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\variables.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Program Files\\Python312\\Lib\\site-packages\\dotenv\\version.py', reloading
 INFO:werkzeug: * Restarting with watchdog (windowsapi)
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): huggingface.co:443
 DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json HTTP/1.1" 200 0

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import tweepy
 from transformers import pipeline
 from tweet import fetch_tweets  # Import the standalone script function
+from scrape_url import scrape_url_content  # Import the scrape_url_content function
 import requests
 from bs4 import BeautifulSoup
 import config
@@ -39,32 +40,11 @@ def analyze_text():
 @app.route('/analyze-url', methods=['POST'])
 def analyze_url():
     url = request.form['url']
-    try:
-        response = requests.get(url)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        
-        # Save the fetched HTML content into a file for debugging
-        with open('fetched_html.html', 'w', encoding='utf-8') as f:
-            f.write(soup.prettify())
-
-        # Extract the main content based on common HTML structures
-        text = soup.get_text(separator=' ', strip=True)
-        
-        # Save the fetched text content into a file for debugging
-        with open('scraped_content.txt', 'w', encoding='utf-8') as f:
-            f.write(text)
-        
-        logging.debug(f"Scraped content: {text}")
-
-        if not text or text.strip() == url:
-            logging.error("No meaningful text found in the URL.")
-            return "No meaningful content found to analyze."
-
-        sentiment = sentiment_pipeline(text)
-        return render_template('result.html', text=text, sentiment=sentiment)
-    except Exception as e:
-        logging.error(f"An error occurred: {e}")
-        return "An error occurred while fetching the URL content."
+    text = scrape_url_content(url)
+    if "An error occurred" in text:
+        return text  # Return error message if there's an issue with scraping
+    sentiment = sentiment_pipeline(text)
+    return render_template('result_url.html', text=text, sentiment=sentiment)
 
 if __name__ == '__main__':
     app.run(debug=True)
