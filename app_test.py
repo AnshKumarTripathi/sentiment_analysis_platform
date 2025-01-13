@@ -1,11 +1,7 @@
 from flask import Flask, render_template, request
-import tweepy
 from transformers import pipeline
 from tweet import fetch_tweets  # Import the standalone script function
 from scrape_url import scrape_url_content  # Import the scrape_url_content function
-import requests
-from bs4 import BeautifulSoup
-import config
 import logging
 
 app = Flask(__name__)
@@ -23,7 +19,6 @@ def home():
 @app.route('/start-stream', methods=['POST'])
 def start_stream():
     keyword = request.form['keyword']
-    logging.debug(f"Bearer Token: {config.TWITTER_BEARER_TOKEN}")
     logging.debug(f"Keyword: {keyword}")
     tweets = fetch_tweets(keyword)
     if isinstance(tweets, str):
@@ -43,8 +38,18 @@ def analyze_url():
     text = scrape_url_content(url)
     if "An error occurred" in text:
         return text  # Return error message if there's an issue with scraping
-    sentiment = sentiment_pipeline(text)
-    return render_template('result_url.html', text=text, sentiment=sentiment)
+    
+    # Tokenize text and take the first 512 tokens
+    tokenizer = sentiment_pipeline.tokenizer
+    inputs = tokenizer(text, truncation=True, max_length=512, return_tensors='pt')
+    
+    # Convert tokens back to text
+    truncated_text = tokenizer.decode(inputs['input_ids'][0], skip_special_tokens=True)
+    
+    # Analyze sentiment of truncated text
+    sentiment = sentiment_pipeline(truncated_text)
+    
+    return render_template('result_url.html', text=truncated_text, sentiment=sentiment, zip=zip)
 
 if __name__ == '__main__':
     app.run(debug=True)
