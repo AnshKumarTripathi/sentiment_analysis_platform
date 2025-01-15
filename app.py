@@ -8,13 +8,10 @@ import logging
 
 app = Flask(__name__)
 
-# Configure logging
 logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 
-# Authenticate to Twitter using the Bearer token
 client = tweepy.Client(bearer_token=config.TWITTER_BEARER_TOKEN)
 
-# Load the sentiment analysis pipeline
 sentiment_pipeline = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
 
 class MyStreamListener(tweepy.StreamingClient):
@@ -58,14 +55,11 @@ def analyze_url():
         response = requests.get(url)
         soup = BeautifulSoup(response.content, 'html.parser')
         
-        # Save the fetched HTML content into a file for debugging
         with open('fetched_html.html', 'w', encoding='utf-8') as f:
             f.write(soup.prettify())
 
-        # Extract the main content based on common HTML structures
         text = soup.get_text(separator=' ', strip=True)
-        
-        # Save the fetched text content into a file for debugging
+
         with open('scraped_content.txt', 'w', encoding='utf-8') as f:
             f.write(text)
         

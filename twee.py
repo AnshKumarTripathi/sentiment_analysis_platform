@@ -1,7 +1,6 @@
 import tweepy
 import config
 
-# Authenticate using the Bearer token
 client = tweepy.Client(bearer_token=config.TWITTER_BEARER_TOKEN)
 
 # Test fetching recent tweets with the corrected max_results value
